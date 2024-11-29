@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\praveepkumar2\OneDrive - Sopra Steria\Projects\Easyjet Phase II\FRAMModel\Production dll\EasyJet.FRAMModel.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{80A35AF1-BA8D-4125-9A4A-7B99ED57014E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>EasyJet.FRAMModel</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>EasyJet.FRAMModel</RootNamespace>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SleepWake\Calculator\ProcessSleepWake.cs" />
+    <Compile Include="SleepWake\Calculator\Scoring.cs" />
+    <Compile Include="SleepWake\Calculator\Stage1SWCalculator.cs" />
+    <Compile Include="SleepWake\Calculator\Stage2SWCalculator.cs" />
+    <Compile Include="SleepWake\Calculator\Stage3SWCalculator.cs" />
+    <Compile Include="SleepWake\Calculator\Stage4SWCalculator.cs" />
+    <Compile Include="SleepWake\Calculator\Stage5SWCalculator.cs" />
+    <Compile Include="SleepWake\Calculator\Stage6SWCalculator.cs" />
+    <Compile Include="SleepWake\Entities\SleepEpisode.cs" />
+    <Compile Include="SleepWake\Entities\Stage1SWResponse.cs" />
+    <Compile Include="SleepWake\Entities\Stage2SWResponse.cs" />
+    <Compile Include="SleepWake\Entities\Stage3SWResponse.cs" />
+    <Compile Include="SleepWake\Entities\Stage4SWResponse.cs" />
+    <Compile Include="SleepWake\Entities\Stage5SWResponse.cs" />
+    <Compile Include="SleepWake\Helpers\Stage1SWHelper.cs" />
+    <Compile Include="SleepWake\Helpers\Stage2SWHelper.cs" />
+    <Compile Include="SleepWake\Helpers\Stage3SWHelper.cs" />
+    <Compile Include="SleepWake\Helpers\Stage4SWHelper.cs" />
+    <Compile Include="SleepWake\Helpers\Stage6SWHelper.cs" />
+    <Compile Include="SleepWake\Helpers\UtilityFunctions.cs" />
+    <Compile Include="Utilities\EntityMapper.cs" />
+    <Compile Include="Engine\ScoreGenerator.cs" />
+    <Compile Include="Engine\ExternalContract\FRMModelRequest.cs" />
+    <Compile Include="Engine\ExternalContract\FRMModelResponse.cs" />
+    <Compile Include="Engine\ExternalContract\IFRMModelRequest.cs" />
+    <Compile Include="Engine\ExternalContract\IFRMModelResponse.cs" />
+    <Compile Include="Engine\ExternalContract\IScoreGenerator.cs" />
+    <Compile Include="Engine\Exceptions\InvalidDataFormatException.cs" />
+    <Compile Include="Engine\Exceptions\InvalidDataValueException.cs" />
+    <Compile Include="Engine\Entities\DutyBlockScore.cs" />
+    <Compile Include="Engine\Entities\DutyPeriodScore.cs" />
+    <Compile Include="Engine\Entities\Stage2Response.cs" />
+    <Compile Include="Engine\Entities\Stage3Response.cs" />
+    <Compile Include="Engine\Entities\Stage4Response.cs" />
+    <Compile Include="Engine\Entities\Stage5Response.cs" />
+    <Compile Include="Engine\Entities\ScoreList.cs" />
+    <Compile Include="Engine\Entities\Stage1Response.cs" />
+    <Compile Include="Engine\Entities\DutyBlock.cs" />
+    <Compile Include="Engine\Entities\DutyPeriod.cs" />
+    <Compile Include="Engine\Calculator\Common.cs" />
+    <Compile Include="Engine\Calculator\ScoreCalculator.cs" />
+    <Compile Include="Engine\Calculator\Stage4Calculator.cs" />
+    <Compile Include="Engine\Calculator\Stage5Calculator.cs" />
+    <Compile Include="Engine\Calculator\Stage6Calculator.cs" />
+    <Compile Include="Engine\Calculator\Stage1Calculator.cs" />
+    <Compile Include="Engine\Calculator\Stage2Calculator.cs" />
+    <Compile Include="Engine\Calculator\Stage3Calculator.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

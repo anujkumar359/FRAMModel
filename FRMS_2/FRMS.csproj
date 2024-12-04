@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\Images\logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Images\logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\logo.ico" />
+  </ItemGroup>  
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\FRAM_GIT\EasyJet.FRAMModel\EasyJet.FRAMModel.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\FRAM_GIT\FRAMModel\EasyJet.FRAMModel\EasyJet.FRAMModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\calculation.png" />
+    <Resource Include="Resources\Images\close.png" />
+    <Resource Include="Resources\Images\maximize.png" />
+    <Resource Include="Resources\Images\minimize.png" />
+    <Resource Include="Resources\Images\open-folder.png" />
+    <Resource Include="Resources\Images\restore.png" />
+  </ItemGroup>
+
+</Project>

@@ -598,17 +598,11 @@ namespace EasyJet.FRAMModel.SleepWake.Helpers
         /// <returns>The merged DataTable.</returns>
         public DataTable MergeRows(DataTable dt, int idx)
         {
-            // Fill nulls with 'None' for specified columns
-            FillNaWithNone(dt, "SbyCallout");
-            FillNaWithNone(dt, "CrewRoute");
-            FillNaWithNone(dt, "NightStopFlag");
-
             // Merging rows
             dt.Rows[idx]["EndDate"] = dt.Rows[idx + 1]["EndDate"];
             dt.Rows[idx]["EndTime"] = dt.Rows[idx + 1]["EndTime"];
             dt.Rows[idx]["DutyEnd"] = dt.Rows[idx + 1]["DutyEnd"];
 
-            dt.Rows[idx]["SbyCallout"] = dt.Rows[idx]["SbyCallout"].ToString() + "/" + dt.Rows[idx + 1]["SbyCallout"].ToString();
             dt.Rows[idx]["CrewRoute"] = dt.Rows[idx]["CrewRoute"].ToString() + "/" + dt.Rows[idx + 1]["CrewRoute"].ToString();
             dt.Rows[idx]["NightStopFlag"] = dt.Rows[idx]["NightStopFlag"].ToString() + "/" + dt.Rows[idx + 1]["NightStopFlag"].ToString();
 

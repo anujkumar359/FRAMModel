@@ -137,11 +137,5 @@ namespace EasyJet.FRAMModel.Engine.ExternalContract
         /// </summary>
         [DispId(21)]
         string[] CommuteTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the array of SbyCallout values.
-        /// </summary>
-        [DispId(22)]
-        string[] SbyCallout { get; set; }
     }
 }

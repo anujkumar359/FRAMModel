@@ -121,7 +121,7 @@ namespace WpfApp1
                     var isContactableList = new List<string>();
                     var isStandbyList = new List<string>();
                     var commuteTimeList = new List<string>();
-                    var sbyCalloutList = new List<string>();
+                    //var sbyCalloutList = new List<string>();
                     //var crewIdList = new List<int>();
 
                     foreach (DataRow dr in dt.Rows)
@@ -147,7 +147,7 @@ namespace WpfApp1
                         isContactableList.Add(dr.ItemArray[18].ToString());
                         isStandbyList.Add(dr.ItemArray[19].ToString());
                         commuteTimeList.Add(dr.ItemArray[20].ToString());
-                        sbyCalloutList.Add(dr.ItemArray[21].ToString());
+                        //sbyCalloutList.Add(dr.ItemArray[21].ToString());
                         //crewIdList.Add(int.Parse(dr.ItemArray[22].ToString()));
                     }
 
@@ -173,7 +173,7 @@ namespace WpfApp1
                     request.IsContactable = isContactableList.ToArray();
                     request.IsStandby = isStandbyList.ToArray();
                     request.CommuteTime = commuteTimeList.ToArray();
-                    request.SbyCallout = sbyCalloutList.ToArray();
+                    //request.SbyCallout = sbyCalloutList.ToArray();
                     ScoreGenerator scoreGenerator = new ScoreGenerator();
                     DateTime startTime = DateTime.Now;
                     IFRMModelResponse response = scoreGenerator.Generate(request);

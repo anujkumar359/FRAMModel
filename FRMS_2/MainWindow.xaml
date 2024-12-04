@@ -26,7 +26,7 @@
             
                 <Border BorderThickness="0,0,0,0.5" BorderBrush="White" HorizontalAlignment="Stretch">
                 <!--<Image Source="/Resources/Images/logo.png" Height="20" />-->
-                     <TextBlock Foreground="White" FontSize="18" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center">Fatigue Risk Management Safety 2.0</TextBlock>
+                     <TextBlock Foreground="White" FontSize="18" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center">Fatigue Risk Management Safety 2.0 (21 Cols)</TextBlock>
                 </Border>
             
             <StackPanel Orientation="Horizontal"

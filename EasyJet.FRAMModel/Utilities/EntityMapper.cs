@@ -16,7 +16,7 @@ namespace EasyJet.FRAMModel.Utilities
         {
             if (request == null)
                 throw new ArgumentNullException("Null request");
-            if (((IEnumerable<object>)new object[22]
+            if (((IEnumerable<object>)new object[21]
             {
         (object) request.IdxInBlock,
         (object) request.OperationalSectorCount,
@@ -38,8 +38,7 @@ namespace EasyJet.FRAMModel.Utilities
         (object) request.HoursBetweenMidnight,
         (object) request.IsStandby,
         (object) request.IsContactable,
-        (object) request.CommuteTime,
-        (object) request.SbyCallout
+        (object) request.CommuteTime
             }).Any<object>((Func<object, bool>)(x => x == null)))
                 throw new ArgumentNullException("Null request parameter value");
             this.ValidateRequestFormat(request);
@@ -139,7 +138,7 @@ namespace EasyJet.FRAMModel.Utilities
 
         private void ValidateRequestFormat(IFRMModelRequest request)
         {
-            if (!((IEnumerable<int>)new int[22]
+            if (!((IEnumerable<int>)new int[21]
             {
         request.IdxInBlock.Length,
         request.OperationalSectorCount.Length,
@@ -161,8 +160,7 @@ namespace EasyJet.FRAMModel.Utilities
         request.HoursBetweenMidnight.Length,
         request.IsContactable.Length,
         request.IsStandby.Length,
-        request.CommuteTime.Length,
-        request.SbyCallout.Length
+        request.CommuteTime.Length
             }).All<int>((Func<int, bool>)(x => x == request.IdxInBlock.Length)))
                 throw new InvalidDataFormatException("Mismatch of duty periods count");
         }

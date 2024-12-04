@@ -35,8 +35,7 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
             dt.Columns.Add("EndDate", typeof(DateTime));
             dt.Columns.Add("StartTime", typeof(DateTime));
             dt.Columns.Add("EndTime", typeof(DateTime));
-            dt.Columns.Add("CommuteTime", typeof(TimeSpan));            
-            dt.Columns.Add("SbyCallout", typeof(string));
+            dt.Columns.Add("CommuteTime", typeof(TimeSpan));          
             dt.Columns.Add("SectorCount", typeof(int));
             dt.Columns.Add("IsaHomeStandbyFlag", typeof(int));
             dt.Columns.Add("DutyID", typeof(int));
@@ -76,7 +75,6 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
                 dataRow["StartTime"] = Convert.ToDateTime(DateTime.Parse(request.StartTimeLocalTime[i], (IFormatProvider)new CultureInfo("en-GB"))).ToString("HH:mm");
                 dataRow["EndTime"] = Convert.ToDateTime(DateTime.Parse(request.EndTimeLocalTime[i], (IFormatProvider)new CultureInfo("en-GB"))).ToString("HH:mm");
                 dataRow["SectorCount"] = request.OperationalSectorCount[i];
-                dataRow["SbyCallout"] = request.SbyCallout[i];
                 dataRow["CommuteTime"] = request.CommuteTime[i];
                 dataRow["IsContactable"] = request.IsContactable[i];
                 dataRow["IsStandby"]=request.IsStandby[i];
@@ -337,7 +335,7 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
             {
                 Console.WriteLine($"ERROR: Not enough time for MIN_SLEEP_TIME={util.MIN_SLEEP_TIME}!");
                 var cols = new[] { "CrewID", "DutyID", "CommuteBegin", "DutyBegin", "DutyEnd", "CommuteEnd",
-                                "RestTime", "StartFDP", "EndFDP", "SbyCallout", "CrewRoute","HSBY"};
+                                "RestTime", "StartFDP", "EndFDP", "CrewRoute","HSBY"};
             }
 
             foreach (DataRow row in dt.Rows)

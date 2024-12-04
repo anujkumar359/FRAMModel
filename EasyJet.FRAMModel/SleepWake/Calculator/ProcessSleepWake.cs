@@ -35,11 +35,9 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
             dt.Columns.Add("EndDate", typeof(DateTime));
             dt.Columns.Add("StartTime", typeof(DateTime));
             dt.Columns.Add("EndTime", typeof(DateTime));
-            dt.Columns.Add("CommuteTime", typeof(TimeSpan));
-            dt.Columns.Add("CrewRoute", typeof(string));
+            dt.Columns.Add("CommuteTime", typeof(TimeSpan));            
             dt.Columns.Add("SbyCallout", typeof(string));
             dt.Columns.Add("SectorCount", typeof(int));
-            dt.Columns.Add("NightStopFlag", typeof(string));
             dt.Columns.Add("DutyID", typeof(int));
             dt.Columns.Add("DutyEnd", typeof(DateTime));
             dt.Columns.Add("DutyBegin", typeof(DateTime));
@@ -79,8 +77,8 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
                 dataRow["SectorCount"] = request.OperationalSectorCount[i];
                 dataRow["SbyCallout"] = request.SbyCallout[i];
                 dataRow["CommuteTime"] = request.CommuteTime[i];
-                dataRow["CrewRoute"] = request.CrewRoute[i];
-                dataRow["NightStopFlag"] = request.NightStopFlag[i];
+                dataRow["IsContactable"] = request.IsContactable[i];
+                dataRow["IsStandby"]=request.IsStandby[i];
                 dt.Rows[i]["FRAMWorkloadScore"] = workLoadScore[i];
             }
 
@@ -413,13 +411,7 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
                     row["ejDisruptive"] = "Non-Disruptive";
                 }
             }
-
-            foreach (DataRow row in dt.Rows)
-            {
-                string crewRoute = row["CrewRoute"].ToString();
-                row["IsContactable"] = util.CONTACTABLES.Contains(crewRoute);
-                row["IsStandby"] = util.STANDBYS.Contains(crewRoute);
-            }
+            
 
             // Filter the times before 9 AM for CommuteTime/CommuteEnd
             var contactableRows = dt.AsEnumerable()

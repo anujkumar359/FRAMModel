@@ -36,8 +36,8 @@ namespace EasyJet.FRAMModel.Utilities
         (object) request.IsDutyElongated,
         (object) request.IsDutyHighSector,
         (object) request.HoursBetweenMidnight,
-        (object) request.CrewRoute,
-        (object) request.NightStopFlag,
+        (object) request.IsStandby,
+        (object) request.IsContactable,
         (object) request.CommuteTime,
         (object) request.SbyCallout
             }).Any<object>((Func<object, bool>)(x => x == null)))
@@ -159,8 +159,8 @@ namespace EasyJet.FRAMModel.Utilities
         request.IsDutyElongated.Length,
         request.IsDutyHighSector.Length,
         request.HoursBetweenMidnight.Length,
-        request.CrewRoute.Length,
-        request.NightStopFlag.Length,
+        request.IsContactable.Length,
+        request.IsStandby.Length,
         request.CommuteTime.Length,
         request.SbyCallout.Length
             }).All<int>((Func<int, bool>)(x => x == request.IdxInBlock.Length)))

@@ -122,16 +122,16 @@ namespace EasyJet.FRAMModel.Engine.ExternalContract
         public string[] HoursBetweenMidnight { get; set; }
 
         /// <summary>
-        /// Gets or sets the crew route.
+        /// Gets or sets a value indicating whether each item is contactable.
         /// </summary>
         [DispId(19)]
-        public string[] CrewRoute { get; set; }
+        public bool[] IsContactable { get; set; }
 
         /// <summary>
-        /// Gets or sets the night stop flag.
+        /// Gets or sets a value indicating whether each item is on standby.
         /// </summary>
         [DispId(20)]
-        public string[] NightStopFlag { get; set; }
+        public bool[] IsStandby { get; set; }
 
         /// <summary>
         /// Gets or sets the commute time.

@@ -118,8 +118,8 @@ namespace WpfApp1
                     var isDutyElongatedList = new List<int>();
                     var isDutyHighSectorList = new List<int>();
                     var hoursBetweenMidnightList = new List<string>();
-                    var crewRouteList = new List<string>();
-                    var nightStopFlagList = new List<string>();
+                    var isContactableList = new List<string>();
+                    var isStandbyList = new List<string>();
                     var commuteTimeList = new List<string>();
                     var sbyCalloutList = new List<string>();
                     //var crewIdList = new List<int>();
@@ -144,8 +144,8 @@ namespace WpfApp1
                         isDutyElongatedList.Add(int.Parse(dr.ItemArray[15].ToString()));
                         isDutyHighSectorList.Add(int.Parse(dr.ItemArray[16].ToString()));
                         hoursBetweenMidnightList.Add(dr.ItemArray[17].ToString());
-                        crewRouteList.Add(dr.ItemArray[18].ToString());
-                        nightStopFlagList.Add(dr.ItemArray[19].ToString());
+                        isContactableList.Add(dr.ItemArray[18].ToString());
+                        isStandbyList.Add(dr.ItemArray[19].ToString());
                         commuteTimeList.Add(dr.ItemArray[20].ToString());
                         sbyCalloutList.Add(dr.ItemArray[21].ToString());
                         //crewIdList.Add(int.Parse(dr.ItemArray[22].ToString()));
@@ -170,8 +170,8 @@ namespace WpfApp1
                     request.IsDutyElongated = isDutyElongatedList.ToArray();
                     request.IsDutyHighSector = isDutyHighSectorList.ToArray();
                     request.HoursBetweenMidnight = hoursBetweenMidnightList.ToArray();
-                    request.CrewRoute = crewRouteList.ToArray();
-                    request.NightStopFlag = nightStopFlagList.ToArray();
+                    request.IsContactable = isContactableList.ToArray();
+                    request.IsStandby = isStandbyList.ToArray();
                     request.CommuteTime = commuteTimeList.ToArray();
                     request.SbyCallout = sbyCalloutList.ToArray();
                     ScoreGenerator scoreGenerator = new ScoreGenerator();

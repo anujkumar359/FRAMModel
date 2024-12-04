@@ -38,6 +38,7 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
             dt.Columns.Add("CommuteTime", typeof(TimeSpan));            
             dt.Columns.Add("SbyCallout", typeof(string));
             dt.Columns.Add("SectorCount", typeof(int));
+            dt.Columns.Add("IsaHomeStandbyFlag", typeof(int));
             dt.Columns.Add("DutyID", typeof(int));
             dt.Columns.Add("DutyEnd", typeof(DateTime));
             dt.Columns.Add("DutyBegin", typeof(DateTime));
@@ -79,6 +80,7 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
                 dataRow["CommuteTime"] = request.CommuteTime[i];
                 dataRow["IsContactable"] = request.IsContactable[i];
                 dataRow["IsStandby"]=request.IsStandby[i];
+                dataRow["IsaHomeStandbyFlag"] = request.IsaHomeStandbyFlag[i];
                 dt.Rows[i]["FRAMWorkloadScore"] = workLoadScore[i];
             }
 

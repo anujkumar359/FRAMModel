@@ -125,13 +125,13 @@ namespace EasyJet.FRAMModel.Engine.ExternalContract
         /// Gets or sets a value indicating whether each item is contactable.
         /// </summary>
         [DispId(19)]
-        public bool[] IsContactable { get; set; }
+        public string[] IsContactable { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether each item is on standby.
         /// </summary>
         [DispId(20)]
-        public bool[] IsStandby { get; set; }
+        public string[] IsStandby { get; set; }
 
         /// <summary>
         /// Gets or sets the commute time.

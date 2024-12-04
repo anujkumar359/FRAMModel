@@ -448,7 +448,7 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
 
             // Filter and shift commute times for 'Standby' with 'HOME'
             var standbyMask = dt.AsEnumerable()
-                .Where(row => row["SbyCallout"].ToString() == "HOME" &&
+                .Where(row => (int)row["IsaHomeStandbyFlag"] == 1 &&
                               (bool)row["IsStandby"] &&
                               ((DateTime)row["CommuteBegin"]).Hour < 9 &&
                               ((DateTime)row["CommuteEnd"]).Hour < 9)

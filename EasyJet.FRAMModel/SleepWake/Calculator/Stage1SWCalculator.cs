@@ -180,8 +180,8 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
                 if (endDate.TimeOfDay < new TimeSpan(9, 0, 0))
                 {
                     // Assume sleep (min 2h) after arrival until 9 am, awake till 22, then sleep
-                    double sleepLen = Math.Max(2, 9 - lastTime);
-                    timeIntervals = util.ArangeValues(0,sleepLen, util.TIME_DELTA);
+                    double sleepLen = (9 - lastTime) < 2 ? 2 : (9 - lastTime);
+                    timeIntervals = util.ArangeValues(0, sleepLen, util.TIME_DELTA);
                     
                     h = timeIntervals.Select(t => util.HomeostaticSleepComponent(t, homeostatics.Last())).ToList();
                     homeostatics.AddRange(h);

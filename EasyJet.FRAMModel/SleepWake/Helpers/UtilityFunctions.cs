@@ -510,7 +510,7 @@ namespace EasyJet.FRAMModel.SleepWake.Helpers
                 else if (xVal >= x[x.Length - 1])
                 {
                     // Extrapolate using the last interval
-                    interpolatedY[i] = y[x.Length - 1] + (y[x.Length - 1] - y[x.Length - 2]) * (xVal - x[x.Length - 1]) / (x[x.Length - 1] - x[x.Length - 2]);
+                    interpolatedY[i] = y[y.Length - 1] + (y[y.Length - 1] - y[y.Length - 2]) * (xVal - x[x.Length - 1]) / (x[x.Length - 1] - x[x.Length - 2]);
                 }
                 else
                 {
@@ -518,7 +518,16 @@ namespace EasyJet.FRAMModel.SleepWake.Helpers
                     int j = Array.FindIndex(x, val => val > xVal) - 1;
 
                     double x0 = x[j], x1 = x[j + 1];
-                    double y0 = y[j], y1 = y[j + 1];
+                    double y0;
+                    double y1;
+                    if (y.Length == j + 1)
+                    {
+                        y0 = y[j]; y1 = y[j];
+                    }
+                    else
+                    {
+                        y0 = y[j]; y1 = y[j + 1];
+                    }
 
                     // Perform linear interpolation
                     interpolatedY[i] = y0 + (y1 - y0) * (xVal - x0) / (x1 - x0);
@@ -602,9 +611,6 @@ namespace EasyJet.FRAMModel.SleepWake.Helpers
             dt.Rows[idx]["EndDate"] = dt.Rows[idx + 1]["EndDate"];
             dt.Rows[idx]["EndTime"] = dt.Rows[idx + 1]["EndTime"];
             dt.Rows[idx]["DutyEnd"] = dt.Rows[idx + 1]["DutyEnd"];
-
-            dt.Rows[idx]["CrewRoute"] = dt.Rows[idx]["CrewRoute"].ToString() + "/" + dt.Rows[idx + 1]["CrewRoute"].ToString();
-            dt.Rows[idx]["NightStopFlag"] = dt.Rows[idx]["NightStopFlag"].ToString() + "/" + dt.Rows[idx + 1]["NightStopFlag"].ToString();
 
             dt.Rows[idx]["SectorCount"] = Convert.ToInt32(dt.Rows[idx]["SectorCount"]) + Convert.ToInt32(dt.Rows[idx + 1]["SectorCount"]);
 

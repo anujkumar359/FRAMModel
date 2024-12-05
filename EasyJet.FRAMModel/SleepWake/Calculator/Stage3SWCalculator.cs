@@ -402,7 +402,14 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
                             break;
                         }
 
-                        double remaining_window = (endIdx - sleeps.Cast<double>().Average()) * tDelta;
+                        var lastElements = sleeps.Select(row => row.Last()).ToArray();
+
+                        // Calculate the mean of the last elements
+                        double meanLastElements = lastElements.Average();
+
+                        // Calculate the remaining window
+                        double remaining_window = (endIdx - meanLastElements) * tDelta;
+
                         if (remaining_window > 12)
                         {
                             // Filter last sleep in the 6-9 hour range

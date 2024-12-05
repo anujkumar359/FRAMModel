@@ -39,65 +39,67 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
             int nCols = 5;
             double tDelta = UtilityFunctions.N_DELTA * util.TIME_DELTA;  // N_DELTA and TIME_DELTA need to be defined
 
-            for (int idx = 0; idx < nonDutyIndexes.Count; idx++)
+            if (nonDutySleeps.Count > 0)
             {
-                var (start, end) = nonDutyIndexes[idx];
-                // Initialize variables
-                double[][] sleeps = nonDutySleeps[idx];
-                int beginIdx = start;
-                int endIdx = end;
-                int offsetIdx = start;
-                double lastSw = lastSwVals[idx];
-
-                // If applicable, select the values less than 14 (from the third-to-last column)
-                List<int> indexes = Enumerable.Range(0, sleeps.Length)
-                                 .Where(i => sleeps[i][sleeps[i].Length - 3] <= 13.9).ToList();
-
-                // Filter sleeps array using the indexes found
-                if (indexes.Count > 0)
+                for (int idx = 0; idx < nonDutyIndexes.Count; idx++)
                 {
-                    sleeps = indexes.Select(i => sleeps[i]).ToArray();
-                }
+                    var (start, end) = nonDutyIndexes[idx];
+                    // Initialize variables
+                    double[][] sleeps = nonDutySleeps[idx];
+                    int beginIdx = start;
+                    int endIdx = end;
+                    int offsetIdx = start;
+                    double lastSw = lastSwVals[idx];
 
-                // Get the index of the row with the highest value in the third-to-last column
-                int maxIndex = sleeps
-                    .Select((row, index) => new { Value = row[row.Length - 3], Index = index })
-                    .OrderByDescending(x => x.Value)
-                    .First()
-                    .Index;
+                    // If applicable, select the values less than 14 (from the third-to-last column)
+                    List<int> indexes = Enumerable.Range(0, sleeps.Length)
+                                     .Where(i => sleeps[i][sleeps[i].Length - 3] <= 13.9).ToList();
 
-                // Get the row with the highest value in the third-to-last column
-                sleeps = new double[][] { sleeps[maxIndex] };
+                    // Filter sleeps array using the indexes found
+                    if (indexes.Count > 0)
+                    {
+                        sleeps = indexes.Select(i => sleeps[i]).ToArray();
+                    }
 
-               
-                // Calculate the number of sleeps (number of rows divided by n_cols)
-                int nSleeps = sleeps[0].Length / nCols;
-                double[][] reshaped = new double[nSleeps][];
-                for (int i = 0; i < nSleeps; i++)
-                {
-                    reshaped[i] = sleeps[0].Skip(i * nCols).Take(nCols).ToArray();
-                }
+                    // Get the index of the row with the highest value in the third-to-last column
+                    int maxIndex = sleeps
+                        .Select((row, index) => new { Value = row[row.Length - 3], Index = index })
+                        .OrderByDescending(x => x.Value)
+                        .First()
+                        .Index;
 
-                sleeps = reshaped;
+                    // Get the row with the highest value in the third-to-last column
+                    sleeps = new double[][] { sleeps[maxIndex] };
 
-                sleeps[0][2] = lastSw; // Replace last sw with its initial value
 
-                // Call a separate function to calculate homeos
-                List<double> h = stage4SWHelper.CalculateNonDutyHomeostatics(sleeps, nSleeps, datetimeRange, offsetIdx, tDelta);
+                    // Calculate the number of sleeps (number of rows divided by n_cols)
+                    int nSleeps = sleeps[0].Length / nCols;
+                    double[][] reshaped = new double[nSleeps][];
+                    for (int i = 0; i < nSleeps; i++)
+                    {
+                        reshaped[i] = sleeps[0].Skip(i * nCols).Take(nCols).ToArray();
+                    }
 
-                
-                // Calculate ndiff
-                int ndiff = (end - start) - (int)sleeps.Last().Last();
+                    sleeps = reshaped;
 
-                int length_to_update = endIdx + 1 - ndiff - beginIdx;
+                    sleeps[0][2] = lastSw; // Replace last sw with its initial value
 
-                // Fill NaN values with the calculated ones
-                for (int i = 0; i < length_to_update; i++)
-                {
-                    homeostaticsWoNan[beginIdx + i] = h[i];
+                    // Call a separate function to calculate homeos
+                    List<double> h = stage4SWHelper.CalculateNonDutyHomeostatics(sleeps, nSleeps, datetimeRange, offsetIdx, tDelta);
+
+
+                    // Calculate ndiff
+                    int ndiff = (end - start) - (int)sleeps.Last().Last();
+
+                    int length_to_update = endIdx + 1 - ndiff - beginIdx;
+
+                    // Fill NaN values with the calculated ones
+                    for (int i = 0; i < length_to_update; i++)
+                    {
+                        homeostaticsWoNan[beginIdx + i] = h[i];
+                    }
                 }
             }
-
             return new Stage4SWResponse() { HomeostaticsWoNan = homeostaticsWoNan };
         }
         

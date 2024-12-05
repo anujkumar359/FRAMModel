@@ -518,11 +518,13 @@ namespace EasyJet.FRAMModel.SleepWake.Helpers
                     int j = Array.FindIndex(x, val => val > xVal) - 1;
 
                     double x0 = x[j], x1 = x[j + 1];
+
                     double y0;
                     double y1;
-                    if (y.Length == j + 1)
+
+                    if (y.Length < x.Length && y.Length <= j + 1)
                     {
-                        y0 = y[j]; y1 = y[j];
+                        y0 = y[j]; y1 = y[y.Length - 1];
                     }
                     else
                     {

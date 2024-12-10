@@ -75,7 +75,7 @@ namespace EasyJet.FRAMModel.SleepWake.Calculator
                 {
                     sum += matrix[i, j] * vector[j];
                 }
-                result[i] = sum.ToString();
+                result[i] = sum.ToString("N2");
             }
 
             return result;
